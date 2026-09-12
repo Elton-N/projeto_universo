@@ -1,0 +1,365 @@
+/* ================================================================
+   VARIÁVEIS DE COR E ESPAÇAMENTO
+   Paleta inspirada em bibliotecas: tons de papel, madeira e ouro.
+================================================================ */
+:root{
+  --cor-fundo: #FAF3E7;        /* Fundo geral, tom de papel envelhecido */
+  --cor-card: #FFFFFF;         /* Fundo dos cards e da galeria */
+  --cor-primaria: #1F2A44;     /* Azul-marinho profundo (header, footer, títulos) */
+  --cor-destaque: #C89B3C;     /* Dourado/mostarda, usado no CTA e detalhes */
+  --cor-destaque-escura: #A87F2C;
+  --cor-texto: #2E2E2E;        /* Texto principal */
+  --cor-texto-secundario: #5C5750;
+  --cor-borda: #E4D9C4;
+  --raio-borda: 10px;
+  --sombra: 0 2px 10px rgba(31, 42, 68, 0.08);
+}
+
+/* ================================================================
+   RESET BÁSICO
+   Remove margens/padding padrão e evita que padding/borda
+   aumentem o tamanho final dos elementos — fundamental para
+   não gerar rolagem horizontal indesejada.
+================================================================ */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links do menu (#sobre, #acervo...) */
+}
+
+body{
+  font-family: 'Georgia', 'Times New Roman', serif; /* Fonte com "cara de livro" para o corpo do texto */
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  overflow-x: hidden; /* Camada extra de segurança contra rolagem horizontal */
+}
+
+h1, h2, h3{
+  font-family: 'Arial', sans-serif; /* Fonte sem serifa nos títulos, para contraste com o corpo */
+  color: var(--cor-primaria);
+}
+
+img{
+  max-width: 100%;   /* Nenhuma imagem ultrapassa a largura do elemento pai */
+  display: block;
+}
+
+a{
+  color: var(--cor-primaria);
+}
+
+/* ================================================================
+   HEADER
+================================================================ */
+.cabecalho{
+  background-color: var(--cor-primaria);
+  padding: 18px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cabecalho-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;         /* Permite empilhar em telas estreitas */
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo{
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+}
+
+.menu{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu a{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a:focus-visible{
+  border-bottom-color: var(--cor-destaque);
+}
+
+/* ================================================================
+   HERO
+   Flexbox: texto e imagem lado a lado no desktop, empilhados
+   no celular (ajustado na media query mais abaixo).
+================================================================ */
+.hero{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-texto{
+  flex: 1 1 380px; /* Cresce/encolhe, com largura mínima confortável de leitura */
+}
+
+.hero h1{
+  font-size: clamp(1.8rem, 4vw, 2.6rem); /* Tamanho fluido: se adapta à largura da tela sozinho */
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.hero p{
+  color: var(--cor-texto-secundario);
+  margin-bottom: 24px;
+  max-width: 55ch;
+}
+
+.botao-cta{
+  display: inline-block;
+  background-color: var(--cor-destaque);
+  color: var(--cor-primaria);
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: var(--raio-borda);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.botao-cta:hover,
+.botao-cta:focus-visible{
+  background-color: var(--cor-destaque-escura);
+  transform: translateY(-2px);
+}
+
+.hero-imagem{
+  flex: 1 1 320px;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra);
+}
+
+/* ================================================================
+   SEÇÕES (padrão geral)
+================================================================ */
+section{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+section h2{
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--cor-borda);
+}
+
+.secao-intro{
+  color: var(--cor-texto-secundario);
+  margin: 12px 0 28px;
+  max-width: 65ch;
+}
+
+.sobre article p{
+  color: var(--cor-texto-secundario);
+  max-width: 75ch;
+  margin-bottom: 16px;
+}
+
+/* ================================================================
+   CARDS (ACERVO / SERVIÇOS)
+   Grid fluido: o navegador decide sozinho quantas colunas cabem,
+   reorganizando automaticamente conforme o espaço disponível.
+================================================================ */
+.grade-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.card{
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  overflow: hidden; /* A imagem respeita o arredondamento do card */
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(31, 42, 68, 0.14);
+}
+
+.card img{
+  width: 100%;
+  height: 170px;
+  object-fit: cover; /* Preenche o espaço sem distorcer a imagem */
+}
+
+.card h3{
+  font-size: 1.1rem;
+  padding: 16px 18px 6px;
+}
+
+.card p{
+  color: var(--cor-texto-secundario);
+  font-size: 0.92rem;
+  padding: 0 18px 18px;
+}
+
+/* ================================================================
+   GALERIA
+   Mesma estratégia de grid fluido, com colunas mais estreitas.
+================================================================ */
+.grade-galeria{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+}
+
+.grade-galeria figure{
+  background-color: var(--cor-card);
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.grade-galeria img{
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Mantém a proporção consistente entre todas as fotos */
+  object-fit: cover;
+}
+
+.grade-galeria figcaption{
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--cor-texto-secundario);
+  text-align: center;
+}
+
+/* ================================================================
+   CONTATO
+================================================================ */
+.contato address{
+  font-style: normal; /* Navegadores itálicam <address> por padrão; removemos aqui */
+  color: var(--cor-texto-secundario);
+}
+
+.contato address p{
+  margin-bottom: 8px;
+}
+
+/* ================================================================
+   FOOTER
+================================================================ */
+.rodape{
+  background-color: var(--cor-primaria);
+  color: #FAF3E7;
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.rodape p{
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: rgba(250, 243, 231, 0.85);
+}
+
+.redes-sociais{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.redes-sociais a{
+  color: #FAF3E7;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-bottom: 1px solid transparent;
+}
+
+.redes-sociais a:hover,
+.redes-sociais a:focus-visible{
+  border-bottom-color: #FAF3E7;
+}
+
+/* ================================================================
+   MEDIA QUERY — TABLET (até 900px)
+   Ponto em que o Hero (texto + imagem lado a lado) começa a
+   espremer demais o texto, então empilhamos os dois blocos.
+================================================================ */
+@media (max-width: 900px){
+
+  .hero{
+    flex-direction: column;
+    text-align: left;
+    padding: 40px 20px;
+  }
+
+  .hero-imagem{
+    order: -1; /* Imagem aparece antes do texto no celular/tablet, criando impacto visual imediato */
+    width: 100%;
+  }
+
+  .grade-cards{
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+}
+
+/* ================================================================
+   MEDIA QUERY — CELULAR (até 600px)
+   Abaixo dessa largura, reduzimos espaçamentos e fazemos o menu
+   do header empilhar, já que em linha ele quebraria de forma
+   pouco legível.
+================================================================ */
+@media (max-width: 600px){
+
+  section{
+    padding: 36px 16px;
+  }
+
+  section h2{
+    font-size: 1.4rem;
+  }
+
+  .cabecalho-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .grade-cards{
+    grid-template-columns: 1fr; /* Uma coluna só, texto e imagem com espaço confortável */
+  }
+
+  .grade-galeria{
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

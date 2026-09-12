@@ -1,0 +1,93 @@
+/* ==========================================================================
+   ESTILOS PADRÃO (DESKTOP / TELA CHEIA)
+   ========================================================================== */
+
+main {
+  background-color: #1c2541;
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#inicio h2 {
+  color: #64dfdf;
+  margin-bottom: 0.5rem;
+}
+
+#curiosidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card container */
+#curiosidades article {
+  background-color: #0b132b;
+  border: 1px solid #3a506b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Garante que os filhos ocupem a largura total */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+/* Efeito Hover (Flutuação + Brilho) */
+#curiosidades article:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 8px 20px rgba(100, 223, 223, 0.3);
+  border-color: #64dfdf;
+}
+
+/* Imagem esticando 100% de ponta a ponta dentro do card */
+#curiosidades article img {
+  display: block; /* Converte a imagem para bloco para aceitar width 100% */
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 180px;
+  object-fit: cover; /* Preenche sem achatar a imagem */
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+#curiosidades h3 {
+  color: #72efdd;
+  margin-bottom: 0.5rem;
+}
+
+/* Textos alinhados */
+#curiosidades article h3,
+#curiosidades article p {
+  text-align: center;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (DISPOSITIVOS MÓVEIS) - SEMPRE NO FINAL DO ARQUIVO
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem 1rem;
+    gap: 1.75rem;
+  }
+
+  #inicio h2 {
+    font-size: 1.5rem;
+  }
+
+  #inicio p {
+    font-size: 0.95rem;
+  }
+
+  #curiosidades {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  #curiosidades article {
+    padding: 1.25rem;
+  }
+}

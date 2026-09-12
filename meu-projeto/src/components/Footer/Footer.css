@@ -1,0 +1,31 @@
+/* ==========================================================================
+   RESPONSIVIDADE DO FOOTER
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  footer {
+    padding: 1.5rem 1rem;
+  }
+
+  footer h4, 
+  footer p:first-child {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 0.875rem;
+  }
+}
+
+footer {
+  background-color: #0b132b;
+  color: #8d99ae;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid #3a506b;
+  margin-top: auto;
+}
+
+footer strong {
+  color: #64dfdf;
+}
