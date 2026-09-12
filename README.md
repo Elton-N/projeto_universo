@@ -7,10 +7,6 @@ Uma aplicação React.js desenvolvida como projeto para aprender **conceitos fun
 - CSS
 
 ## Como executar
-cd meu-projeto
-npm install
-npm run dev
-
 ## Funcionalidades
 - Header
 - Main
